@@ -12,7 +12,7 @@ function App() {
           style: {
             background: '#111714',
             color: '#b0b8b4',
-            border: '1px solid rgba(168,224,99,0.3)',
+            border: '1px solid rgba(74,140,63,0.3)',
           },
         }}
       />

@@ -19,7 +19,7 @@ import FadeIn from '../components/FadeIn'
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#0f2a1e' }}>
+    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#1a3a2a' }}>
       {/* Background image */}
       <div className="absolute inset-0">
         <img
@@ -27,8 +27,8 @@ function Hero() {
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-center opacity-30"
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(15,42,30,0.4), rgba(15,42,30,0.7), #0f2a1e)' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #0f2a1e, transparent, transparent)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(26,58,42,0.4), rgba(26,58,42,0.7), #1a3a2a)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #1a3a2a, transparent, transparent)' }} />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-28 pb-24">
@@ -39,8 +39,8 @@ function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center gap-2 mb-8"
           >
-            <div className="w-6 h-px" style={{ backgroundColor: '#a8e063' }} />
-            <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#a8e063' }}>
+            <div className="w-6 h-px" style={{ backgroundColor: '#4a8c3f' }} />
+            <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#4a8c3f' }}>
               IA Private Wealth · Burlington, ON
             </span>
           </motion.div>
@@ -57,7 +57,7 @@ function Hero() {
                   className="text-5xl md:text-6xl xl:text-7xl font-black leading-none tracking-tight"
                   style={{
                     fontFamily: "'Inter Tight', sans-serif",
-                    color: i === 0 ? '#ffffff' : i === 1 ? '#a8e063' : 'rgba(255,255,255,0.35)',
+                    color: i === 0 ? '#ffffff' : i === 1 ? '#4a8c3f' : 'rgba(255,255,255,0.35)',
                   }}
                 >
                   {line}
@@ -90,7 +90,7 @@ function Hero() {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
               }}
               className="font-bold px-7 py-3.5 rounded-full transition-all duration-200 text-sm"
-              style={{ backgroundColor: '#a8e063', color: '#0f2a1e' }}
+              style={{ backgroundColor: '#4a8c3f', color: '#1a3a2a' }}
             >
               Start Your Plan
             </a>
@@ -112,7 +112,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.05 }}
             className="pl-5 max-w-lg"
-            style={{ borderLeft: '2px solid rgba(168,224,99,0.4)' }}
+            style={{ borderLeft: '2px solid rgba(74,140,63,0.4)' }}
           >
             <p className="text-sm italic leading-relaxed mb-2" style={{ color: 'rgba(255,255,255,0.55)' }}>
               "25 years later, we own our home, are seasoned travellers and a few short years
@@ -195,7 +195,7 @@ function Philosophy() {
               <div className="relative bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md hover:border-lime/30 transition-all duration-300 h-full overflow-hidden group">
                 <span
                   className="absolute -top-3 -right-1 text-[80px] font-black leading-none select-none"
-                  style={{ fontFamily: "'Inter Tight', sans-serif", color: 'rgba(168,224,99,0.12)' }}
+                  style={{ fontFamily: "'Inter Tight', sans-serif", color: 'rgba(74,140,63,0.12)' }}
                 >
                   {step.num}
                 </span>
@@ -345,7 +345,7 @@ function About() {
                 <button
                   type="submit"
                   className="font-bold px-5 py-2.5 rounded-xl text-sm transition-all whitespace-nowrap"
-                  style={{ backgroundColor: '#a8e063', color: '#0f2a1e' }}
+                  style={{ backgroundColor: '#4a8c3f', color: '#1a3a2a' }}
                 >
                   Get Chapter
                 </button>
@@ -542,7 +542,7 @@ function Services() {
               alt="Precision, Transparency, Performance"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'rgba(15,42,30,0.55)' }}>
+            <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'rgba(26,58,42,0.55)' }}>
               <p
                 className="text-2xl md:text-4xl font-black text-white tracking-widest text-center"
                 style={{ fontFamily: "'Inter Tight', sans-serif" }}
@@ -664,7 +664,7 @@ function KeepMoving() {
               />
               <div
                 className="absolute inset-0 flex flex-col justify-end p-8"
-                style={{ background: 'linear-gradient(to top, rgba(15,42,30,0.85), transparent)' }}
+                style={{ background: 'linear-gradient(to top, rgba(26,58,42,0.85), transparent)' }}
               >
                 <p className="text-lime text-xs font-semibold tracking-widest uppercase mb-2">
                   The Keep Moving Initiative
@@ -710,7 +710,7 @@ function KeepMoving() {
                 <div key={p.title} className="flex gap-4">
                   <div
                     className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-black"
-                    style={{ backgroundColor: 'rgba(168,224,99,0.15)', color: '#a8e063' }}
+                    style={{ backgroundColor: 'rgba(74,140,63,0.15)', color: '#4a8c3f' }}
                   >
                     {i + 1}
                   </div>
@@ -730,7 +730,7 @@ function KeepMoving() {
             <Link
               to="/keep-moving"
               className="inline-flex items-center gap-2 font-bold px-7 py-3.5 rounded-full transition-all text-sm"
-              style={{ backgroundColor: '#a8e063', color: '#0f2a1e' }}
+              style={{ backgroundColor: '#4a8c3f', color: '#1a3a2a' }}
             >
               Learn More About Keep Moving
             </Link>
@@ -770,7 +770,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="py-28" style={{ backgroundColor: '#0f2a1e' }}>
+    <section id="contact" className="py-28" style={{ backgroundColor: '#1a3a2a' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <FadeIn>
@@ -800,8 +800,8 @@ function Contact() {
                   onClick={() => setSelectedTopic(t.id)}
                   className="flex items-center justify-between p-4 rounded-xl border transition-all duration-200 cursor-pointer text-left"
                   style={{
-                    backgroundColor: selectedTopic === t.id ? 'rgba(168,224,99,0.08)' : 'rgba(255,255,255,0.03)',
-                    borderColor: selectedTopic === t.id ? 'rgba(168,224,99,0.4)' : 'rgba(255,255,255,0.07)',
+                    backgroundColor: selectedTopic === t.id ? 'rgba(74,140,63,0.08)' : 'rgba(255,255,255,0.03)',
+                    borderColor: selectedTopic === t.id ? 'rgba(74,140,63,0.4)' : 'rgba(255,255,255,0.07)',
                   }}
                 >
                   <div>
@@ -828,7 +828,7 @@ function Contact() {
                     required={label !== 'Phone'}
                     placeholder={label === 'Name' ? 'Your full name' : label === 'Email' ? 'your@email.com' : '(905) 555-0100'}
                     className="w-full border rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition-colors"
-                    style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)', caretColor: '#a8e063' }}
+                    style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)', caretColor: '#4a8c3f' }}
                   />
                 </div>
               ))}
@@ -848,7 +848,7 @@ function Contact() {
               <button
                 type="submit"
                 className="w-full font-bold py-4 rounded-xl transition-all text-sm mt-2"
-                style={{ backgroundColor: '#a8e063', color: '#0f2a1e' }}
+                style={{ backgroundColor: '#4a8c3f', color: '#1a3a2a' }}
               >
                 Send Message to Peter
               </button>
