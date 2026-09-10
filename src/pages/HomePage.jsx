@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
@@ -7,13 +7,13 @@ import {
   Award,
   BookOpen,
   GraduationCap,
-  ChevronRight,
   Mail,
   Phone,
   MapPin,
   Check,
   Plus,
   Minus,
+  Quote,
 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -22,79 +22,64 @@ import FadeIn from '../components/FadeIn'
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="relative min-h-screen bg-deep-velocity flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ backgroundColor: '#0f2a1e' }}>
       {/* Background image */}
       <div className="absolute inset-0">
         <img
           src="https://media.base44.com/images/public/69f21c09404e88be8afea430/640ddd16a_generated_image.png"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-30"
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-deep-velocity/30 via-deep-velocity/60 to-deep-velocity lg:from-deep-velocity/20 lg:via-deep-velocity/50 lg:to-deep-velocity" />
-        <div className="absolute inset-0 bg-gradient-to-t from-deep-velocity via-transparent to-transparent opacity-70" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(15,42,30,0.4), rgba(15,42,30,0.7), #0f2a1e)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #0f2a1e, transparent, transparent)' }} />
       </div>
 
-      {/* Content */}
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-28 pb-24">
-        <div className="lg:ml-auto lg:w-[50%] xl:w-[45%]">
-          {/* Eyebrow */}
+        <div className="lg:ml-auto lg:w-[52%]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center gap-2 mb-8"
           >
-            <div className="w-6 h-px bg-lime" />
-            <span className="text-lime text-xs font-semibold tracking-widest uppercase">
+            <div className="w-6 h-px" style={{ backgroundColor: '#a8e063' }} />
+            <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#a8e063' }}>
               IA Private Wealth · Burlington, ON
             </span>
           </motion.div>
 
-          {/* H1 */}
-          <div className="mb-8 overflow-hidden">
+          <div className="mb-8">
             {['YOUR WEALTH', 'YOUR HEALTH', 'YOUR LIFE.'].map((line, i) => (
               <motion.div
                 key={line}
-                initial={{ y: 100, opacity: 0 }}
+                initial={{ y: 80, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.3 + i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 0.7, delay: 0.3 + i * 0.13, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <h1
-                  className={`text-5xl md:text-6xl xl:text-7xl font-black leading-none tracking-tight ${
-                    i === 0
-                      ? 'text-white'
-                      : i === 1
-                      ? 'text-lime'
-                      : 'text-silver/40'
-                  }`}
-                  style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                  className="text-5xl md:text-6xl xl:text-7xl font-black leading-none tracking-tight"
+                  style={{
+                    fontFamily: "'Inter Tight', sans-serif",
+                    color: i === 0 ? '#ffffff' : i === 1 ? '#a8e063' : 'rgba(255,255,255,0.35)',
+                  }}
                 >
-                  {i === 2 ? (
-                    <>
-                      YOUR LIFE
-                      <span className="text-white">.</span>
-                    </>
-                  ) : (
-                    line
-                  )}
+                  {line}
                 </h1>
               </motion.div>
             ))}
           </div>
 
-          {/* Body */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.75 }}
-            className="text-silver/70 text-lg leading-relaxed mb-10 max-w-lg"
+            className="text-lg leading-relaxed mb-10 max-w-lg"
+            style={{ color: 'rgba(255,255,255,0.65)' }}
           >
-            The only advisor who treats your body and your portfolio as one system. When you
-            move well and plan well, your possibilities are limitless.
+            Helping clients realize life's possibilities — today and tomorrow. Comprehensive
+            wealth planning that honours your health, your values, and your future.
           </motion.p>
 
-          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -107,7 +92,8 @@ function Hero() {
                 e.preventDefault()
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="bg-lime text-deep-velocity font-bold px-7 py-3.5 rounded-full hover:bg-lime/90 transition-all duration-200 text-sm"
+              className="font-bold px-7 py-3.5 rounded-full transition-all duration-200 text-sm"
+              style={{ backgroundColor: '#a8e063', color: '#0f2a1e' }}
             >
               Start Your Plan
             </a>
@@ -117,29 +103,29 @@ function Hero() {
                 e.preventDefault()
                 document.getElementById('philosophy')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              className="border border-white/30 text-white font-semibold px-7 py-3.5 rounded-full hover:border-white/60 hover:bg-white/5 transition-all duration-200 text-sm"
+              className="font-semibold px-7 py-3.5 rounded-full transition-all duration-200 text-sm"
+              style={{ border: '1px solid rgba(255,255,255,0.25)', color: '#ffffff' }}
             >
               How It Works
             </a>
           </motion.div>
 
-          {/* Testimonial Quote */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.05 }}
-            className="border-l-2 border-lime/40 pl-5 max-w-lg"
+            className="pl-5 max-w-lg"
+            style={{ borderLeft: '2px solid rgba(168,224,99,0.4)' }}
           >
-            <p className="text-silver/70 text-sm italic leading-relaxed mb-2">
+            <p className="text-sm italic leading-relaxed mb-2" style={{ color: 'rgba(255,255,255,0.55)' }}>
               "25 years later, we own our home, are seasoned travellers and a few short years
               from retirement. Peter's guidance helped us through this journey."
             </p>
-            <span className="text-silver/40 text-xs">— Susan &amp; Todd, clients since 1995</span>
+            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>— Susan &amp; Todd, clients since 1995</span>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}
@@ -150,7 +136,7 @@ function Hero() {
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
         >
-          <ChevronDown size={24} className="text-white/30" />
+          <ChevronDown size={24} style={{ color: 'rgba(255,255,255,0.3)' }} />
         </motion.div>
       </motion.div>
     </section>
@@ -164,81 +150,71 @@ function Philosophy() {
       num: '01',
       title: 'Design',
       subtitle: 'It begins with a conversation.',
-      body: 'A sense of what\'s possible and an important conversation about where you are today, where you want to be, and how we get you there together.',
+      body: "A sense of what's possible and an important conversation that helps us understand where the real value is when it comes to your money. It all starts with an idea.",
     },
     {
       num: '02',
       title: 'Build',
       subtitle: 'Your customized financial plan.',
-      body: 'The idea becomes a customized financial plan that addresses your goals, aligns with your values, and charts a clear path to your best possible future.',
+      body: 'The idea becomes a customized financial plan that includes a balance of what you need today and what you want for the future. Both are important. Both are understood.',
     },
     {
       num: '03',
       title: 'Live',
-      subtitle: 'Watch life\'s possibilities unfold.',
-      body: 'We work to help you achieve your financial goals while adapting to life\'s inevitable changes — because a great plan is always evolving.',
+      subtitle: "Watch life's possibilities unfold.",
+      body: "We work to help you achieve your financial goals knowing that our greatest success is watching you live the life we helped you plan for — one full of possibility: today and tomorrow.",
     },
   ]
 
   return (
-    <section id="philosophy" className="relative bg-deep-velocity py-28 overflow-hidden">
-      {/* Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <span
-          className="text-[clamp(60px,12vw,160px)] font-black text-white/[0.025] tracking-widest whitespace-nowrap"
-          style={{ fontFamily: "'Inter Tight', sans-serif" }}
-        >
-          POSSIBILITIES
-        </span>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="philosophy" className="py-28 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <FadeIn className="text-center mb-20">
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="w-6 h-px bg-lime" />
-            <span className="text-lime text-xs font-semibold tracking-widest uppercase">
+            <span className="text-xs font-semibold tracking-widest uppercase text-lime">
               How We Do It
             </span>
             <div className="w-6 h-px bg-lime" />
           </div>
           <h2
-            className="text-4xl md:text-5xl font-black text-white leading-tight"
-            style={{ fontFamily: "'Inter Tight', sans-serif" }}
+            className="text-4xl md:text-5xl font-black leading-tight mb-4"
+            style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
           >
             When We Think About
             <br />
             <span className="text-lime">Investing</span>
           </h2>
-          <p className="text-silver/60 mt-6 max-w-xl mx-auto leading-relaxed">
-            Our approach is grounded in a simple truth: great wealth planning starts with
-            understanding you — your life, your health, your ambitions.
+          <p className="text-slate-500 mt-4 max-w-xl mx-auto leading-relaxed">
+            Our defined process helps us create tailored strategies and solutions with a
+            customized financial plan that's supportive of your needs today and possibilities
+            for tomorrow.
           </p>
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {steps.map((step, i) => (
             <FadeIn key={step.num} delay={i * 0.15}>
-              <div className="relative bg-card rounded-2xl p-8 border border-white/5 hover:border-lime/30 transition-all duration-300 group h-full overflow-hidden">
-                {/* Step number watermark */}
+              <div className="relative bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md hover:border-lime/30 transition-all duration-300 h-full overflow-hidden group">
                 <span
-                  className="absolute -top-4 -right-2 text-[80px] font-black text-white/[0.04] leading-none select-none"
-                  style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                  className="absolute -top-3 -right-1 text-[80px] font-black leading-none select-none"
+                  style={{ fontFamily: "'Inter Tight', sans-serif", color: 'rgba(168,224,99,0.12)' }}
                 >
                   {step.num}
                 </span>
                 <div className="relative">
-                  <div className="w-8 h-px bg-lime mb-6" />
+                  <div className="w-8 h-0.5 bg-lime mb-6" />
                   <span className="text-lime text-xs font-semibold tracking-widest uppercase mb-3 block">
                     Step {step.num}
                   </span>
                   <h3
-                    className="text-xl font-black text-white mb-2"
-                    style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                    className="text-xl font-black mb-2"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
                   >
                     {step.title}
                   </h3>
-                  <p className="text-silver/80 font-semibold text-sm mb-4">{step.subtitle}</p>
-                  <p className="text-silver/60 text-sm leading-relaxed">{step.body}</p>
+                  <p className="text-slate-700 font-semibold text-sm mb-3">{step.subtitle}</p>
+                  <p className="text-slate-500 text-sm leading-relaxed">{step.body}</p>
                 </div>
               </div>
             </FadeIn>
@@ -263,34 +239,33 @@ function About() {
     {
       name: 'Sandra Bridgwater',
       title: 'Licensed Assistant',
-      email: 'sandra.bridgwater@ia.ca',
+      email: 'Sandra.Bridgwater@iaprivatewealth.ca',
       img: 'https://images.squarespace-cdn.com/content/v1/5fa94b47d64dd91bd77c833e/1631636042639-9XKSHYAOUB9GO7M1NCGT/CPCo-8250.jpg',
     },
     {
       name: 'Kim Kingston',
       title: 'Administrative Assistant',
-      email: 'kim.kingston@ia.ca',
+      email: 'Kim.Kingston@iaprivatewealth.ca',
       img: 'https://images.squarespace-cdn.com/content/v1/5fa94b47d64dd91bd77c833e/1631636069530-FGHCBYG3MOFYH2341IOD/CPCo-8251.jpg',
     },
     {
       name: 'Shari Rogers',
       title: 'Licensed Assistant',
-      email: 'shari.rogers@ia.ca',
+      email: 'Shari.Rogers@iaprivatewealth.ca',
       img: 'https://images.squarespace-cdn.com/content/v1/5fa94b47d64dd91bd77c833e/1631636094486-2NCVWZ5URNILKIDT21AP/CPCo-8273.jpg',
     },
   ]
 
   const badges = [
-    { icon: <Award size={16} />, label: 'Top 30 President\'s Council at IA' },
+    { icon: <Award size={16} />, label: "Top 30 President's Council at IA" },
     { icon: <BookOpen size={16} />, label: 'Author — On Time Retirement' },
     { icon: <GraduationCap size={16} />, label: 'Educator at McMaster, Mohawk & Sheridan' },
   ]
 
   return (
-    <section id="about" className="bg-card py-28">
+    <section id="about" className="bg-white py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left: Photo + Badges */}
           <FadeIn>
             <div className="relative">
               <div className="relative overflow-hidden rounded-2xl group">
@@ -300,24 +275,21 @@ function About() {
                   className="w-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700"
                   style={{ height: '520px' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-velocity/60 via-transparent to-transparent" />
               </div>
-              {/* Badges */}
               <div className="mt-4 flex flex-col gap-3">
                 {badges.map((b) => (
                   <div
                     key={b.label}
-                    className="flex items-center gap-3 bg-deep-velocity/80 border border-white/5 rounded-xl px-4 py-3"
+                    className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3"
                   >
                     <span className="text-lime">{b.icon}</span>
-                    <span className="text-silver/80 text-sm">{b.label}</span>
+                    <span className="text-slate-600 text-sm">{b.label}</span>
                   </div>
                 ))}
               </div>
             </div>
           </FadeIn>
 
-          {/* Right: Bio */}
           <FadeIn delay={0.15}>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-6 h-px bg-lime" />
@@ -326,17 +298,17 @@ function About() {
               </span>
             </div>
             <h2
-              className="text-4xl md:text-5xl font-black text-white mb-2"
-              style={{ fontFamily: "'Inter Tight', sans-serif" }}
+              className="text-4xl md:text-5xl font-black mb-2"
+              style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
             >
               Peter Long
             </h2>
-            <p className="text-silver/60 text-sm mb-6">
+            <p className="text-slate-500 text-sm mb-6">
               BA, CFP® · Director, Private Client Group · Investment Advisor
             </p>
             <div className="w-12 h-0.5 bg-lime mb-8" />
 
-            <div className="flex flex-col gap-5 text-silver/70 text-sm leading-relaxed mb-10">
+            <div className="flex flex-col gap-5 text-slate-600 text-sm leading-relaxed mb-10">
               <p>
                 As a member of the coveted Top 30 President's Council at IA, Peter believes that
                 the way he adds value to the lives of his clients is to successfully manage assets
@@ -354,13 +326,12 @@ function About() {
               </p>
             </div>
 
-            {/* Book Signup */}
-            <div className="border border-lime/30 rounded-2xl p-6 bg-deep-velocity/50">
+            <div className="border border-lime/30 rounded-2xl p-6 bg-slate-50">
               <div className="flex items-center gap-3 mb-4">
                 <BookOpen size={18} className="text-lime" />
                 <span
-                  className="text-white font-bold text-sm"
-                  style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                  className="font-bold text-sm"
+                  style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
                 >
                   Free: First Chapter of <em>On Time Retirement</em>
                 </span>
@@ -372,11 +343,12 @@ function About() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-silver/30 focus:outline-none focus:border-lime/50 transition-colors"
+                  className="flex-1 bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-slate-800 text-sm placeholder:text-slate-400 focus:outline-none focus:border-lime transition-colors"
                 />
                 <button
                   type="submit"
-                  className="bg-lime text-deep-velocity font-bold px-5 py-2.5 rounded-xl text-sm hover:bg-lime/90 transition-all whitespace-nowrap"
+                  className="font-bold px-5 py-2.5 rounded-xl text-sm transition-all whitespace-nowrap"
+                  style={{ backgroundColor: '#a8e063', color: '#0f2a1e' }}
                 >
                   Get Chapter
                 </button>
@@ -386,19 +358,23 @@ function About() {
         </div>
 
         {/* Team */}
-        <div className="mt-20">
-          <FadeIn>
+        <div className="mt-24">
+          <FadeIn className="text-center mb-12">
             <h3
-              className="text-2xl font-black text-white mb-10 text-center"
-              style={{ fontFamily: "'Inter Tight', sans-serif" }}
+              className="text-2xl font-black"
+              style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
             >
-              Meet the Team
+              People Who Care
             </h3>
+            <p className="text-slate-500 text-sm mt-2 max-w-md mx-auto">
+              With over 25 years of experience, our team is devoted to fostering meaningful
+              relationships and ensuring clients realize life's possibilities.
+            </p>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {teamMembers.map((member, i) => (
               <FadeIn key={member.name} delay={i * 0.12}>
-                <div className="bg-deep-velocity rounded-2xl overflow-hidden border border-white/5 hover:border-white/10 transition-all duration-300 group">
+                <div className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group">
                   <div className="overflow-hidden h-64">
                     <img
                       src={member.img}
@@ -408,15 +384,15 @@ function About() {
                   </div>
                   <div className="p-5">
                     <h4
-                      className="text-white font-bold text-base mb-1"
-                      style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                      className="font-bold text-base mb-1"
+                      style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
                     >
                       {member.name}
                     </h4>
-                    <p className="text-silver/50 text-xs mb-3">{member.title}</p>
+                    <p className="text-slate-400 text-xs mb-3">{member.title}</p>
                     <a
                       href={`mailto:${member.email}`}
-                      className="text-lime/70 hover:text-lime text-xs transition-colors"
+                      className="text-lime text-xs hover:text-lime/70 transition-colors"
                     >
                       {member.email}
                     </a>
@@ -434,7 +410,6 @@ function About() {
 // ─── Services ─────────────────────────────────────────────────────────────────
 function Services() {
   const [expanded, setExpanded] = useState({})
-
   const toggle = (id) => setExpanded((prev) => ({ ...prev, [id]: !prev[id] }))
 
   const services = [
@@ -443,7 +418,7 @@ function Services() {
       tag: 'Planning',
       title: 'Financial Planning',
       intro: 'Comprehensive strategy that outlines your goals, objectives and needs.',
-      body: "It's an important conversation about who you are, where you are, and where you want to be — and how your finances can get you there.",
+      body: "It's an important conversation that understands the balance of having what you need for the future without compromising what's possible for today.",
       bullets: [
         'Define your spending and expense priorities',
         'Personal and business wealth planning',
@@ -460,7 +435,7 @@ function Services() {
       tag: 'Advice',
       title: 'Wealth Management',
       intro: 'Integrated and disciplined process that defines how we execute your strategy.',
-      body: 'From guiding you through market complexity to navigating life\'s changes, our process keeps your wealth working for you at every stage.',
+      body: "Our belief is that the way we can add the most value is through our integrated and disciplined wealth management process — with the confidence to execute your plan.",
       bullets: [
         'Guiding you through the process',
         'Monitoring your progress',
@@ -478,7 +453,7 @@ function Services() {
       tag: 'Investing',
       title: 'Investment Strategy',
       intro: 'Tactical strategies that keep your portfolio on track and on target.',
-      body: 'We deploy disciplined, evidence-based investment strategies aligned with your values and built for the long term.',
+      body: 'When it comes to executing your strategy, we employ a disciplined approach ensuring things stay on track — and we can make tactical changes whenever life demands it.',
       bullets: [
         'Sustainable investments through diversity, governance & ecology',
         'Invest in products and businesses that support your beliefs',
@@ -494,7 +469,7 @@ function Services() {
   ]
 
   return (
-    <section id="services" className="bg-deep-velocity py-28">
+    <section id="services" className="bg-slate-50 py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <FadeIn className="text-center mb-20">
           <div className="flex items-center justify-center gap-2 mb-4">
@@ -505,34 +480,34 @@ function Services() {
             <div className="w-6 h-px bg-lime" />
           </div>
           <h2
-            className="text-4xl md:text-5xl font-black text-white leading-tight"
-            style={{ fontFamily: "'Inter Tight', sans-serif" }}
+            className="text-4xl md:text-5xl font-black leading-tight mb-4"
+            style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
           >
             Everything We Do Has a
             <br />
             <span className="text-lime">Positive Impact</span>
           </h2>
-          <p className="text-silver/60 mt-6 max-w-xl mx-auto leading-relaxed">
-            Three integrated disciplines — planning, management, and strategy — working
-            together to create lasting prosperity for you and your family.
+          <p className="text-slate-500 mt-4 max-w-xl mx-auto leading-relaxed">
+            We work as a team to ensure that every touchpoint of your experience with us
+            leaves you feeling well advised and well taken care of.
           </p>
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           {services.map((svc, i) => (
             <FadeIn key={svc.id} delay={i * 0.12}>
-              <div className="bg-card rounded-2xl p-8 border border-white/5 hover:border-lime/20 transition-all duration-300 h-full flex flex-col">
-                <span className="inline-block bg-lime/10 text-lime text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-6 self-start">
+              <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md hover:border-lime/30 transition-all duration-300 h-full flex flex-col">
+                <span className="inline-block text-lime text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-6 self-start border border-lime/30 bg-lime/5">
                   {svc.tag}
                 </span>
                 <h3
-                  className="text-xl font-black text-white mb-2"
-                  style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                  className="text-xl font-black mb-2"
+                  style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
                 >
                   {svc.title}
                 </h3>
-                <p className="text-silver/80 font-semibold text-sm mb-3">{svc.intro}</p>
-                <p className="text-silver/50 text-sm leading-relaxed mb-6">{svc.body}</p>
+                <p className="text-slate-700 font-semibold text-sm mb-3">{svc.intro}</p>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">{svc.body}</p>
 
                 <div className="mt-auto">
                   <button
@@ -550,7 +525,7 @@ function Services() {
                       className="flex flex-col gap-2.5"
                     >
                       {svc.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2.5 text-silver/60 text-sm">
+                        <li key={b} className="flex items-start gap-2.5 text-slate-500 text-sm">
                           <Check size={14} className="text-lime mt-0.5 flex-shrink-0" />
                           {b}
                         </li>
@@ -563,7 +538,6 @@ function Services() {
           ))}
         </div>
 
-        {/* Full-width image */}
         <FadeIn>
           <div className="relative rounded-3xl overflow-hidden h-64 md:h-80">
             <img
@@ -571,7 +545,7 @@ function Services() {
               alt="Precision, Transparency, Performance"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-deep-velocity/50 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: 'rgba(15,42,30,0.55)' }}>
               <p
                 className="text-2xl md:text-4xl font-black text-white tracking-widest text-center"
                 style={{ fontFamily: "'Inter Tight', sans-serif" }}
@@ -593,19 +567,19 @@ function Testimonials() {
       name: 'Susan & Todd',
       since: 'Clients since 1995',
       quote:
-        'We were worried we wouldn\'t have enough money to buy a house let alone retire and 25 years later, we own our home, are seasoned travellers and a few short years from retirement. Peter\'s trusted and invaluable guidance helped us through this journey. We can\'t recommend Peter and his team strongly enough.',
+        "We were worried we wouldn't have enough money to buy a house let alone retire and 25 years later, we own our home, are seasoned travellers and a few short years from retirement. Peter's trusted and invaluable guidance helped us through this journey. We can't recommend Peter and his team strongly enough.",
     },
     {
       name: 'Suzette & Norm',
       since: 'Clients since 2006',
       quote:
-        'Peter\'s wealth planning process made sure our personal financial goals were looked after. In over 15+ years of working with Peter and his team, we\'ve seen this process tested through many ups and downs of the markets and we\'ve always had a level of comfort that our money is well looked after and working to achieve our goals.',
+        "Peter's wealth planning process made sure our personal financial goals were looked after. In over 15+ years of working with Peter and his team, we've seen this process tested through many ups and downs of the markets and we've always had a level of comfort that our money is well looked after.",
     },
     {
       name: 'Elise & Mark',
       since: 'Clients since 2018',
       quote:
-        'We are so comfortable with the advice and guidance that Peter and his team have given us. We are looking to start a family and weren\'t sure we could begin saving for the future and buy a home. We\'ve been able to stay on track and have just recently purchased our first home.',
+        "We are so comfortable with the advice and guidance that Peter and his team have given us. We were looking to start a family and weren't sure we could begin saving for the future and buy a home. We've been able to stay on track and have just recently purchased our first home.",
     },
     {
       name: 'Jordan',
@@ -616,9 +590,9 @@ function Testimonials() {
   ]
 
   return (
-    <section id="testimonials" className="bg-card py-28">
+    <section id="testimonials" className="bg-white py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <FadeIn className="text-center mb-20">
+        <FadeIn className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
             <div className="w-6 h-px bg-lime" />
             <span className="text-lime text-xs font-semibold tracking-widest uppercase">
@@ -627,8 +601,8 @@ function Testimonials() {
             <div className="w-6 h-px bg-lime" />
           </div>
           <h2
-            className="text-4xl md:text-5xl font-black text-white leading-tight"
-            style={{ fontFamily: "'Inter Tight', sans-serif" }}
+            className="text-4xl md:text-5xl font-black leading-tight"
+            style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
           >
             Nothing Matters More
             <br />
@@ -639,19 +613,19 @@ function Testimonials() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
             <FadeIn key={t.name} delay={i * 0.1}>
-              <div className="bg-deep-velocity rounded-2xl p-8 border border-white/5 hover:border-lime/20 transition-all duration-300 h-full flex flex-col">
-                <div className="text-lime text-4xl font-black leading-none mb-6 select-none" style={{ fontFamily: "'Inter Tight', sans-serif" }}>"</div>
-                <p className="text-silver/70 text-sm leading-relaxed flex-1 italic mb-8">
+              <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-lime/25 hover:shadow-sm transition-all duration-300 h-full flex flex-col">
+                <Quote size={28} className="text-lime/30 mb-5" />
+                <p className="text-slate-600 text-sm leading-relaxed flex-1 italic mb-8">
                   {t.quote}
                 </p>
-                <div className="border-t border-white/5 pt-5">
+                <div className="border-t border-slate-200 pt-5">
                   <p
-                    className="text-white font-bold text-sm"
-                    style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                    className="font-bold text-sm"
+                    style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
                   >
                     {t.name}
                   </p>
-                  <p className="text-lime/60 text-xs mt-0.5">{t.since}</p>
+                  <p className="text-lime text-xs mt-0.5">{t.since}</p>
                 </div>
               </div>
             </FadeIn>
@@ -662,171 +636,109 @@ function Testimonials() {
   )
 }
 
-// ─── Earth Stride / Keep Moving ───────────────────────────────────────────────
-function EarthStride() {
-  const features = [
+// ─── Keep Moving (no app) ─────────────────────────────────────────────────────
+function KeepMoving() {
+  const pillars = [
     {
-      title: 'Virtual Global Challenges',
-      body: 'Walk the Camino de Santiago, trek Machu Picchu or hike the Himalayas — all from your neighborhood.',
+      title: 'A Philosophy of Wellness',
+      body: 'Peter believes that wealth without health is fundamentally incomplete. The habits and disciplines that keep you physically vital are the same ones that build lasting financial resilience.',
     },
     {
-      title: 'Community & Leaderboards',
-      body: 'Move alongside a community of clients who share the belief that physical vitality drives financial clarity.',
+      title: 'The Keep Moving Initiative',
+      body: 'Our "Keep Moving" campaign is a commitment to integrated living — inspiring clients to stay active, stay engaged, and stay connected to what truly matters in life and in planning.',
     },
     {
-      title: 'Health–Wealth Dashboard',
-      body: 'Your steps, active minutes and movement streaks displayed alongside your wealth progress — one unified view.',
-    },
-    {
-      title: 'Habit Streaks & Badges',
-      body: 'Momentum compounds. Earn badges for consistency and watch how daily movement builds long-term resilience.',
+      title: 'Advocacy Beyond the Portfolio',
+      body: 'True advocacy means caring about the whole person. From healthcare navigation to elder care guidance, we help clients navigate life\'s biggest transitions with confidence.',
     },
   ]
 
   return (
-    <section className="bg-white py-28">
+    <section className="py-28 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <FadeIn className="mb-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-px bg-lime" />
-            <span className="text-lime text-xs font-semibold tracking-widest uppercase">
-              The Keep Moving Initiative
-            </span>
-          </div>
-        </FadeIn>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Left: Phone mock */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left: image */}
           <FadeIn>
-            <div className="flex justify-center">
-              <div className="relative w-72 bg-[#0d1210] rounded-[2.5rem] border-[6px] border-[#1a2420] shadow-2xl overflow-hidden">
-                {/* Notch */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#0d1210] rounded-b-2xl z-10" />
-                <div className="pt-10 pb-8 px-5">
-                  {/* App header */}
-                  <div className="flex items-center justify-between mb-5">
-                    <div>
-                      <p className="text-[#a8e063] text-xs font-bold tracking-wide">Earth Stride</p>
-                      <p className="text-white/60 text-[11px]">Good morning, Peter</p>
-                    </div>
-                    <div className="w-8 h-8 bg-[#a8e063]/20 rounded-full flex items-center justify-center">
-                      <span className="text-[#a8e063] text-xs font-bold">PL</span>
-                    </div>
-                  </div>
-
-                  {/* Stats grid */}
-                  <div className="grid grid-cols-2 gap-2 mb-5">
-                    {[
-                      { label: 'Steps', value: '8,432' },
-                      { label: 'Active', value: '47 min' },
-                      { label: 'Wealth Score', value: '↑ 4.2%', green: true },
-                      { label: 'Challenge Rank', value: '#3 / 24' },
-                    ].map((stat) => (
-                      <div key={stat.label} className="bg-white/5 rounded-xl p-3">
-                        <p className={`text-base font-black ${stat.green ? 'text-[#a8e063]' : 'text-white'}`} style={{ fontFamily: "'Inter Tight', sans-serif" }}>
-                          {stat.value}
-                        </p>
-                        <p className="text-white/40 text-[10px] mt-0.5">{stat.label}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Progress bar */}
-                  <div className="bg-white/5 rounded-xl p-4">
-                    <div className="flex justify-between items-center mb-2">
-                      <p className="text-white text-[11px] font-semibold">Camino de Santiago</p>
-                      <span className="text-[#a8e063] text-[10px] font-bold">68%</span>
-                    </div>
-                    <div className="w-full bg-white/10 rounded-full h-1.5 mb-2">
-                      <div className="bg-[#a8e063] h-1.5 rounded-full" style={{ width: '68%' }} />
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-white/40 text-[10px]">543 km completed</span>
-                      <span className="text-white/40 text-[10px]">252 km remaining</span>
-                    </div>
-                  </div>
-                </div>
+            <div className="relative rounded-2xl overflow-hidden">
+              <img
+                src="https://media.base44.com/images/public/69f21c09404e88be8afea430/9daea49ae_generated_image.png"
+                alt="Keep Moving — health and wealth"
+                className="w-full h-[480px] object-cover"
+              />
+              <div
+                className="absolute inset-0 flex flex-col justify-end p-8"
+                style={{ background: 'linear-gradient(to top, rgba(15,42,30,0.85), transparent)' }}
+              >
+                <p className="text-lime text-xs font-semibold tracking-widest uppercase mb-2">
+                  The Keep Moving Initiative
+                </p>
+                <p
+                  className="text-white text-3xl font-black leading-tight"
+                  style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                >
+                  Move more.
+                  <br />
+                  Live more.
+                  <br />
+                  <span className="text-lime">Grow more.</span>
+                </p>
               </div>
             </div>
           </FadeIn>
 
-          {/* Right: Text + features */}
+          {/* Right: content */}
           <FadeIn delay={0.15}>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-6 h-px bg-lime" />
+              <span className="text-lime text-xs font-semibold tracking-widest uppercase">
+                Where Health Meets Wealth
+              </span>
+            </div>
             <h2
-              className="text-4xl md:text-5xl font-black text-deep-velocity leading-tight mb-6"
-              style={{ fontFamily: "'Inter Tight', sans-serif" }}
+              className="text-4xl md:text-5xl font-black leading-tight mb-6"
+              style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
             >
               Your Body is
               <br />
               <span className="text-lime">Your First Portfolio</span>
             </h2>
-            <p className="text-deep-velocity/60 leading-relaxed mb-10">
-              Peter built Earth Stride — a platform that unites physical vitality with financial
-              growth. Because the habits that keep you healthy are the same habits that build
-              lasting wealth.
+            <p className="text-slate-600 leading-relaxed mb-10">
+              For over 38 years, one principle has guided Peter's practice: true prosperity
+              requires both robust health and sound financial planning. Wealth without wellness
+              is fundamentally incomplete.
             </p>
 
-            <div className="flex flex-col gap-6 mb-10">
-              {features.map((f, i) => (
-                <div key={f.title} className="flex gap-4">
-                  <div className="w-2 h-2 bg-lime rounded-full mt-2 flex-shrink-0" />
+            <div className="flex flex-col gap-8 mb-10">
+              {pillars.map((p, i) => (
+                <div key={p.title} className="flex gap-4">
+                  <div
+                    className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-black"
+                    style={{ backgroundColor: 'rgba(168,224,99,0.15)', color: '#a8e063' }}
+                  >
+                    {i + 1}
+                  </div>
                   <div>
                     <p
-                      className="text-deep-velocity font-bold text-sm mb-1"
-                      style={{ fontFamily: "'Inter Tight', sans-serif" }}
+                      className="font-bold text-sm mb-1"
+                      style={{ fontFamily: "'Inter Tight', sans-serif", color: '#1a2e1e' }}
                     >
-                      {f.title}
+                      {p.title}
                     </p>
-                    <p className="text-deep-velocity/60 text-sm leading-relaxed">{f.body}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{p.body}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="https://stride-global-path.base44.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-lime text-deep-velocity font-bold px-7 py-3.5 rounded-full hover:bg-lime/90 transition-all text-sm"
-              >
-                Get the App
-              </a>
-              <Link
-                to="/keep-moving"
-                className="border border-deep-velocity/30 text-deep-velocity font-semibold px-7 py-3.5 rounded-full hover:border-deep-velocity/60 hover:bg-deep-velocity/5 transition-all text-sm"
-              >
-                Learn More
-              </Link>
-            </div>
+            <Link
+              to="/keep-moving"
+              className="inline-flex items-center gap-2 font-bold px-7 py-3.5 rounded-full transition-all text-sm"
+              style={{ backgroundColor: '#a8e063', color: '#0f2a1e' }}
+            >
+              Learn More About Keep Moving
+            </Link>
           </FadeIn>
         </div>
-
-        {/* Full-width banner image */}
-        <FadeIn>
-          <div className="relative rounded-3xl overflow-hidden h-72 md:h-96">
-            <img
-              src="https://media.base44.com/images/public/69f21c09404e88be8afea430/9daea49ae_generated_image.png"
-              alt="Keep Moving"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-deep-velocity/50 flex flex-col items-center justify-center text-center">
-              <p
-                className="text-3xl md:text-5xl font-black text-lime leading-tight mb-4"
-                style={{ fontFamily: "'Inter Tight', sans-serif" }}
-              >
-                Move more.
-                <br />
-                Live more.
-                <br />
-                Grow more.
-              </p>
-              <span className="text-white/40 text-xs tracking-widest uppercase">
-                Earth Stride · Keep Moving
-              </span>
-            </div>
-          </div>
-        </FadeIn>
       </div>
     </section>
   )
@@ -835,24 +747,12 @@ function EarthStride() {
 // ─── Contact ──────────────────────────────────────────────────────────────────
 function Contact() {
   const topics = [
-    {
-      id: 'wealth',
-      label: 'Optimize Wealth',
-      description: 'Portfolio, estate & tax planning',
-    },
-    {
-      id: 'health',
-      label: 'Activate Health',
-      description: 'Health-wealth integration',
-    },
-    {
-      id: 'total',
-      label: 'Total Integration',
-      description: 'Full holistic approach',
-    },
+    { id: 'retirement', label: 'Retirement Planning', description: 'Sustainable income and peace of mind' },
+    { id: 'wealth', label: 'Wealth Management', description: 'Portfolio, estate & tax strategies' },
+    { id: 'family', label: 'Family & Legacy', description: 'Inter-generational wealth and giving' },
   ]
 
-  const [selectedTopic, setSelectedTopic] = useState('wealth')
+  const [selectedTopic, setSelectedTopic] = useState('retirement')
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
 
   const handleSubmit = (e) => {
@@ -862,10 +762,9 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-deep-velocity py-28">
+    <section id="contact" className="py-28" style={{ backgroundColor: '#0f2a1e' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left */}
           <FadeIn>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-6 h-px bg-lime" />
@@ -881,106 +780,67 @@ function Contact() {
               <br />
               <span className="text-lime">Start Here</span>
             </h2>
-            <p className="text-silver/60 leading-relaxed mb-10">
-              Whether you're ready to start a plan, curious about how we work, or simply want
-              to explore the possibilities — we'd love to hear from you.
+            <p className="leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              Your financial future deserves a real conversation. Tell Peter what matters to
+              you — no friction, just forward momentum.
             </p>
 
-            {/* Topic selector */}
             <div className="flex flex-col gap-3 mb-10">
               {topics.map((t) => (
                 <button
                   key={t.id}
                   onClick={() => setSelectedTopic(t.id)}
-                  className={`flex items-center justify-between p-4 rounded-xl border transition-all duration-200 cursor-pointer text-left ${
-                    selectedTopic === t.id
-                      ? 'bg-lime/10 border-lime/40 text-white'
-                      : 'bg-white/[0.03] border-white/5 text-silver/60 hover:border-white/15'
-                  }`}
+                  className="flex items-center justify-between p-4 rounded-xl border transition-all duration-200 cursor-pointer text-left"
+                  style={{
+                    backgroundColor: selectedTopic === t.id ? 'rgba(168,224,99,0.08)' : 'rgba(255,255,255,0.03)',
+                    borderColor: selectedTopic === t.id ? 'rgba(168,224,99,0.4)' : 'rgba(255,255,255,0.07)',
+                  }}
                 >
                   <div>
-                    <p className="font-semibold text-sm">{t.label}</p>
-                    <p className={`text-xs mt-0.5 ${selectedTopic === t.id ? 'text-silver/60' : 'text-silver/40'}`}>
-                      {t.description}
-                    </p>
+                    <p className="font-semibold text-sm text-white">{t.label}</p>
+                    <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.4)' }}>{t.description}</p>
                   </div>
-                  {selectedTopic === t.id && (
-                    <Check size={16} className="text-lime flex-shrink-0" />
-                  )}
+                  {selectedTopic === t.id && <Check size={16} className="text-lime flex-shrink-0" />}
                 </button>
               ))}
             </div>
 
-            {/* Contact info */}
             <div className="flex flex-col gap-4">
-              <a
-                href="mailto:peter.long@ia.ca"
-                className="flex items-center gap-3 text-silver/60 hover:text-lime transition-colors text-sm"
-              >
+              <a href="mailto:Peter.Long@iaprivatewealth.ca" className="flex items-center gap-3 text-sm transition-colors hover:text-lime" style={{ color: 'rgba(255,255,255,0.5)' }}>
                 <Mail size={16} className="text-lime/60" />
-                peter.long@ia.ca
+                Peter.Long@iaprivatewealth.ca
               </a>
-              <a
-                href="tel:9059457200"
-                className="flex items-center gap-3 text-silver/60 hover:text-lime transition-colors text-sm"
-              >
+              <a href="tel:+19053369544" className="flex items-center gap-3 text-sm transition-colors hover:text-lime" style={{ color: 'rgba(255,255,255,0.5)' }}>
                 <Phone size={16} className="text-lime/60" />
-                (905) 945-7200
+                905.336.9544 · TF: 1-800-289-6235
               </a>
-              <div className="flex items-start gap-3 text-silver/60 text-sm">
+              <div className="flex items-start gap-3 text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
                 <MapPin size={16} className="text-lime/60 flex-shrink-0 mt-0.5" />
-                <span>
-                  1235 North Shore Blvd E, Suite 400
-                  <br />
-                  Burlington, ON L7S 2H8
-                </span>
+                1001, Champlain Avenue, Suite 201<br />Burlington, ON L7L 5Z4
               </div>
             </div>
           </FadeIn>
 
-          {/* Right: Form */}
           <FadeIn delay={0.15}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              {['Name', 'Email', 'Phone'].map((label) => (
+                <div key={label}>
+                  <label className="text-xs tracking-wide uppercase mb-2 block" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                    {label} {label === 'Phone' && <span className="normal-case" style={{ color: 'rgba(255,255,255,0.2)' }}>(optional)</span>}
+                  </label>
+                  <input
+                    type={label === 'Email' ? 'email' : label === 'Phone' ? 'tel' : 'text'}
+                    value={form[label.toLowerCase()]}
+                    onChange={(e) => setForm({ ...form, [label.toLowerCase()]: e.target.value })}
+                    required={label !== 'Phone'}
+                    placeholder={label === 'Name' ? 'Your full name' : label === 'Email' ? 'your@email.com' : '(905) 555-0100'}
+                    className="w-full border rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition-colors"
+                    style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)', caretColor: '#a8e063' }}
+                  />
+                </div>
+              ))}
               <div>
-                <label className="text-silver/50 text-xs tracking-wide uppercase mb-2 block">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  required
-                  placeholder="Your full name"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-silver/30 focus:outline-none focus:border-lime/50 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="text-silver/50 text-xs tracking-wide uppercase mb-2 block">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  required
-                  placeholder="your@email.com"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-silver/30 focus:outline-none focus:border-lime/50 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="text-silver/50 text-xs tracking-wide uppercase mb-2 block">
-                  Phone <span className="text-silver/30 normal-case">(optional)</span>
-                </label>
-                <input
-                  type="tel"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  placeholder="(905) 555-0100"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-silver/30 focus:outline-none focus:border-lime/50 transition-colors"
-                />
-              </div>
-              <div>
-                <label className="text-silver/50 text-xs tracking-wide uppercase mb-2 block">
+                <label className="text-xs tracking-wide uppercase mb-2 block" style={{ color: 'rgba(255,255,255,0.35)' }}>
                   Message
                 </label>
                 <textarea
@@ -988,22 +848,23 @@ function Contact() {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   rows={5}
                   placeholder={`I'm interested in ${topics.find((t) => t.id === selectedTopic)?.label}...`}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm placeholder:text-silver/30 focus:outline-none focus:border-lime/50 transition-colors resize-none"
+                  className="w-full border rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none transition-colors resize-none"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)' }}
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-lime text-deep-velocity font-bold py-4 rounded-xl hover:bg-lime/90 transition-all text-sm mt-2"
+                className="w-full font-bold py-4 rounded-xl transition-all text-sm mt-2"
+                style={{ backgroundColor: '#a8e063', color: '#0f2a1e' }}
               >
                 Send Message to Peter
               </button>
             </form>
 
-            <p className="text-silver/30 text-[11px] leading-relaxed mt-6">
+            <p className="text-xs leading-relaxed mt-6" style={{ color: 'rgba(255,255,255,0.25)' }}>
               Peter Long is a Financial Advisor with IA Private Wealth. IA Securities Inc. is a
               member of the Canadian Investment Regulatory Organization (CIRO) and a member of
-              the Canadian Investor Protection Fund (CIPF). The information contained herein is
-              for informational purposes only.
+              the Canadian Investor Protection Fund (CIPF).
             </p>
           </FadeIn>
         </div>
@@ -1012,7 +873,7 @@ function Contact() {
   )
 }
 
-// ─── Home Page ────────────────────────────────────────────────────────────────
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function HomePage() {
   return (
     <>
@@ -1023,7 +884,7 @@ export default function HomePage() {
         <About />
         <Services />
         <Testimonials />
-        <EarthStride />
+        <KeepMoving />
         <Contact />
       </main>
       <Footer />

@@ -47,25 +47,25 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:peter.long@ia.ca"
+                href="mailto:Peter.Long@iaprivatewealth.ca"
                 className="flex items-center gap-3 text-sm text-silver/60 hover:text-lime transition-colors duration-200 group"
               >
                 <Mail size={15} className="text-lime/60 group-hover:text-lime flex-shrink-0" />
-                peter.long@ia.ca
+                Peter.Long@iaprivatewealth.ca
               </a>
               <a
-                href="tel:9059457200"
+                href="tel:+19053369544"
                 className="flex items-center gap-3 text-sm text-silver/60 hover:text-lime transition-colors duration-200 group"
               >
                 <Phone size={15} className="text-lime/60 group-hover:text-lime flex-shrink-0" />
-                (905) 945-7200
+                905.336.9544 · TF: 1-800-289-6235
               </a>
               <div className="flex items-start gap-3 text-sm text-silver/60">
                 <MapPin size={15} className="text-lime/60 flex-shrink-0 mt-0.5" />
                 <span>
-                  1235 North Shore Blvd E, Suite 400
+                  1001, Champlain Avenue, Suite 201
                   <br />
-                  Burlington, ON L7S 2H8
+                  Burlington, ON L7L 5Z4
                 </span>
               </div>
             </div>
