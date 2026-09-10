@@ -68,12 +68,6 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
-            <Link
-              to="/keep-moving"
-              className="text-sm text-lime hover:text-lime/80 transition-colors duration-200 font-semibold"
-            >
-              Keep Moving
-            </Link>
             <button
               onClick={() => handleHashNav('#contact')}
               className="text-sm bg-lime text-deep-velocity font-bold px-5 py-2.5 rounded-full hover:bg-lime/90 transition-all duration-200 cursor-pointer border-none"
@@ -125,12 +119,7 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
-            <Link
-              to="/keep-moving"
-              className="text-lg text-lime hover:text-lime/80 py-3 border-b border-white/5 font-semibold"
-            >
-              Keep Moving
-            </Link>
+
           </div>
           <div className="mt-8">
             <button
