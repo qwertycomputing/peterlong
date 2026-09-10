@@ -7,9 +7,6 @@ import {
   Award,
   BookOpen,
   GraduationCap,
-  Mail,
-  Phone,
-  MapPin,
   Check,
   Plus,
   Minus,
@@ -757,7 +754,18 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    toast.success('Thank you! Peter will be in touch shortly.')
+    const topic = topics.find((t) => t.id === selectedTopic)?.label || ''
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.phone ? `Phone: ${form.phone}` : '',
+      `Topic: ${topic}`,
+      '',
+      form.message,
+    ].filter(Boolean).join('\n')
+
+    window.location.href = `mailto:Peter.Long@iaprivatewealth.ca?subject=Inquiry%3A%20${encodeURIComponent(topic)}&body=${encodeURIComponent(body)}`
+    toast.success("Opening your email client — message ready to send!")
     setForm({ name: '', email: '', phone: '', message: '' })
   }
 
@@ -785,7 +793,7 @@ function Contact() {
               you — no friction, just forward momentum.
             </p>
 
-            <div className="flex flex-col gap-3 mb-10">
+            <div className="flex flex-col gap-3">
               {topics.map((t) => (
                 <button
                   key={t.id}
@@ -803,21 +811,6 @@ function Contact() {
                   {selectedTopic === t.id && <Check size={16} className="text-lime flex-shrink-0" />}
                 </button>
               ))}
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <a href="mailto:Peter.Long@iaprivatewealth.ca" className="flex items-center gap-3 text-sm transition-colors hover:text-lime" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                <Mail size={16} className="text-lime/60" />
-                Peter.Long@iaprivatewealth.ca
-              </a>
-              <a href="tel:+19053369544" className="flex items-center gap-3 text-sm transition-colors hover:text-lime" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                <Phone size={16} className="text-lime/60" />
-                905.336.9544 · TF: 1-800-289-6235
-              </a>
-              <div className="flex items-start gap-3 text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                <MapPin size={16} className="text-lime/60 flex-shrink-0 mt-0.5" />
-                1001, Champlain Avenue, Suite 201<br />Burlington, ON L7L 5Z4
-              </div>
             </div>
           </FadeIn>
 
